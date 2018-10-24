@@ -2,18 +2,19 @@ import java.util.List;
 import java.util.ArrayList;
 import javafx.util.Pair;
 /*
-String Compressor Challenge
+String Compressor 
 Finds the frequency of a given character in a string at its position
 
 Algorithm:
 Starting from the first character, compare each element(i) with the character in its (i + 1) position
 Increment a varible 'frequency' for every similar character encountered when iterating through i
 If a new character is found, return the previous character with its accumulated frequency
+If resulting string has a greater length than original string, return original string 
 */
 class StringCompressor {
 
     public static void main(String[] args) {
-        System.out.println(compress("aabbccccddddddef")); 
+        System.out.println(compress("aabbccdd")); 
     }
 
 
@@ -51,7 +52,13 @@ class StringCompressor {
 
         }
 
-        return format(results);
+        String finalString = format(results);
+        
+        if(finalString.length() > string.length()){
+            return string;
+        }else{
+            return finalString;
+        }
     }
 
     public static String format(List<Pair<Character, Integer>> listCharInt){
